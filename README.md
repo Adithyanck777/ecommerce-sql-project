@@ -1,8 +1,5 @@
 # E-Commerce Sales & Customer Analytics
-
-SQL-driven analysis of an e-commerce platform's orders, customers, products,
-and payments —“The project analyzes sales performance, customer behavior, and churn risk using SQL.”
-
+SQL-based analysis of an e-commerce platform's orders, customers, products, and payments. The project analyzes sales performance, customer behavior, and churn risk using SQL.
 ## Business context
 
 You're a data analyst at a mid-size e-commerce company. Leadership wants
@@ -12,20 +9,10 @@ spend and category investment for next quarter.
 
 ## Dataset
 
-The Kaggle Olist dataset wasn't reachable from the build environment, so
-`data/generate_data.py` generates a **synthetic dataset with the same
-schema and shape** as Olist: customers, products, orders, order_items,
-and payments, at realistic scale (9,000 customers, 1,200 products, 26,000
-orders, 51,000+ order line items, Jan 2023–Dec 2024). It's not fabricated
-to fit the answers — The project uses a synthetic e-commerce dataset based on the Olist dataset structure. The data includes customers, products, orders, order items, and payments. Swap in the real Olist CSVs against the same schema
-(`sql/00_schema.sql`) and every query in this repo runs unchanged.
+The project uses a synthetic e-commerce dataset based on the Olist dataset structure. The data includes customers, products, orders, order items, and payments, with 9,000 customers, 1,200 products, 26,000 orders, and 51,000+ order line items covering January 2023 to December 2024.
 
-To regenerate the dataset and SQLite DB:
-```bash
-pip install faker
-python3 data/generate_data.py
-```
-This writes CSVs to `data/` and a normalized database to `db/ecommerce.db`.
+The dataset is generated using data/generate_data.py and stored as CSV files in data/ and a SQLite database in db/ecommerce.db.
+
 
 ## Schema
 
@@ -40,12 +27,10 @@ Full DDL: `sql/00_schema.sql`.
 
 ## SQL scripts (`/sql`)
 
-Each file is self-contained and answers one business question. All were
-run and validated against `db/ecommerce.db` (SQLite dialect; notes below
-on porting to Postgres/MySQL).
+Each file is self-contained and answers one business question. Each query is designed to run against db/ecommerce.db.
 
 | File | Question | Key techniques |
-|---|---|---|
+|------|----------|----------------|
 | `01_monthly_revenue_trends.sql` | Monthly & quarterly revenue trend | date grouping, running-total window function |
 | `02_top10_customers_ltv.sql` | Top 10 customers by lifetime value | aggregation, `RANK()` |
 | `03_category_revenue_margin.sql` | Revenue & margin by product category | joins, `GROUP BY`/`HAVING` |
@@ -107,7 +92,4 @@ ecommerce-analytics/
 
 ## Resume bullet
 
-> Built end-to-end SQL analysis on 25,000+ e-commerce transactions to
-> identify revenue trends, customer segments, and churn risk, using
-> window functions (`RANK`, `LAG`, `NTILE`) and cohort analysis;
-> presented findings via an interactive dashboard.
+Analyzed 26,000+ e-commerce orders using SQL to identify revenue trends, customer segments, category performance, and churn risk; applied CTEs, window functions (RANK, LAG, NTILE), and cohort analysis, with findings presented through an interactive dashboard.

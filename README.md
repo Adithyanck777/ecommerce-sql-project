@@ -1,9 +1,7 @@
 # E-Commerce Sales & Customer Analytics
 
 SQL-driven analysis of an e-commerce platform's orders, customers, products,
-and payments — built to answer the questions leadership actually asks:
-where is revenue coming from, who are our best customers, and who's about
-to churn.
+and payments —“The project analyzes sales performance, customer behavior, and churn risk using SQL.”
 
 ## Business context
 
@@ -19,10 +17,7 @@ The Kaggle Olist dataset wasn't reachable from the build environment, so
 schema and shape** as Olist: customers, products, orders, order_items,
 and payments, at realistic scale (9,000 customers, 1,200 products, 26,000
 orders, 51,000+ order line items, Jan 2023–Dec 2024). It's not fabricated
-to fit the answers — the generator builds in *distributions* (seasonal
-demand, a repeat-purchase skew across customers, category-level margins,
-regional mix) and the SQL below discovers the resulting patterns
-independently. Swap in the real Olist CSVs against the same schema
+to fit the answers — The project uses a synthetic e-commerce dataset based on the Olist dataset structure. The data includes customers, products, orders, order items, and payments. Swap in the real Olist CSVs against the same schema
 (`sql/00_schema.sql`) and every query in this repo runs unchanged.
 
 To regenerate the dataset and SQLite DB:
